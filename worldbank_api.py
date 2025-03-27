@@ -1,23 +1,38 @@
 import requests
 
-def obtener_datos_educacion():
-    url = "http://api.worldbank.org/v2/country/BR;AR;CO;MX;CL/indicator/SE.ADT.LITR.ZS?format=json"
-    response = requests.get(url)
+# Lista de países latinoamericanos con su código en la API del Banco Mundial
+paises = ["ARG", "BRA", "COL", "MEX", "PER", "CHL"]
 
-    if response.status_code == 200:
-        datos = response.json()
-        if len(datos) > 1 and isinstance(datos[1], list):  # Verificar que haya datos válidos
-            for registro in datos[1]:
-                pais = registro.get('country', {}).get('value', 'Desconocido')
-                anio = registro.get('date', 'Desconocido')
-                tasa = registro.get('value', 'No disponible')
+# Indicador: Tasa bruta de matrícula en educación primaria
+indicador = "SE.PRM.ENRR"
 
-                print(f"País: {pais}")
-                print(f"Año: {anio}")
-                print(f"Tasa de alfabetización: {tasa}")
-                print("-" * 30)
+print("\nTasa Bruta de Matrícula en Educación Primaria por País en Latinoamérica\n")
+
+for pais in paises:
+    URL = f"https://api.worldbank.org/v2/country/{pais}/indicator/{indicador}?format=json&per_page=5"
+    respuesta = requests.get(URL)
+
+    if respuesta.status_code == 200:
+        datos = respuesta.json()
+
+        if len(datos) > 1 and datos[1]:
+            encontrado = False  # Bandera para verificar si hay datos válidos
+            for entrada in datos[1]:  # Recorremos varios años para encontrar datos disponibles
+                nombre_pais = entrada["country"]["value"]
+                anio = entrada["date"]
+                valor = entrada["value"]
+
+                if valor:  # Si encontramos un dato válido, lo imprimimos
+                    print(f"País: {nombre_pais}")
+                    print(f"Año: {anio}")
+                    print(f"Tasa de matrícula: {valor}%")
+                    print("-" * 60)
+                    encontrado = True
+                    break  # Nos quedamos con el dato más reciente disponible
+            
+            if not encontrado:
+                print(f"No hay datos recientes para {nombre_pais}")
+
     else:
-        print(f"Error al obtener los datos. Código de estado: {response.status_code}")
+        print(f"Error al obtener datos para {pais}")
 
-if __name__ == "__main__":
-    obtener_datos_educacion()
