@@ -35,7 +35,7 @@ Este repositorio contiene ejercicios de programación en Python que realizan con
 ## Cómo ejecutar los scripts
 1. Clona el repositorio:
    ```bash
-   git clone https://github.com/tu-usuario/ejercicios-consulta-apis.git
+   git clone https://github.com/Chakerr/Consulta-APIs.git
    cd ejercicios-consulta-apis
    ```
 2. Instala Python 3 y pip si no los tienes:
