@@ -18,7 +18,7 @@ Este repositorio contiene ejercicios de programación en Python que realizan con
 
 ### 2. Consulta a la API del Banco Mundial
 - **Archivo:** `worldbank_api.py`
-- **Descripción:** Este script consulta la API del **Banco Mundial** para obtener la tasa bruta de matricula en edicacion primaria de varios países de América Latina.
+- **Descripción:** Este script consulta la API del **Banco Mundial** para obtener la tasa bruta de matricula en educacion primaria de varios países de América Latina.
 - **API utilizada:** [World Bank API](https://data.worldbank.org/)
 - **Ejemplo de salida:**
   ```
