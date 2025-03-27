@@ -18,13 +18,13 @@ Este repositorio contiene ejercicios de programación en Python que realizan con
 
 ### 2. Consulta a la API del Banco Mundial
 - **Archivo:** `worldbank_api.py`
-- **Descripción:** Este script consulta la API del **Banco Mundial** para obtener la tasa de alfabetización de varios países de América Latina.
+- **Descripción:** Este script consulta la API del **Banco Mundial** para obtener la tasa bruta de matricula en edicacion primaria de varios países de América Latina.
 - **API utilizada:** [World Bank API](https://data.worldbank.org/)
 - **Ejemplo de salida:**
   ```
   País: Colombia
-  Año: 2020
-  Tasa de alfabetización: 95.2
+  Año: 2022
+  Tasa de alfabetización: 103.970321655273%
   ------------------------------
   ```
 
